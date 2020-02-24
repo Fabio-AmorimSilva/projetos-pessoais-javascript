@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="UTF-8">
+      <title>Variables</title>
+  </head>
+  <body>
+
+    <button>Start Machine</button>
+    <p>Machine not working.</p>
+    <script>
+
+      const btn  = document.querySelector('button');
+      const text = document.querySelector('p');
+
+      btn.addEventListener('click', machineToggle);
+
+      function machineToggle(){
+
+        if(btn.textContent === 'Start Machine'){
+           btn.textContent  = "Stop Machine";
+           text.textContent = "Machine Started!";
+
+        } else{
+          btn.textContent  = "Start Machine";
+          text.textContent = "Machine Stopped."; 
+        }
+
+
+      }
+
+
+      /*
+      const button = document.querySelector('button');
+
+      button.onclick = function(){
+        let name = prompt("What's your name?");
+        alert("Hello " + name + ", nice to meet you!");
+      }
+      */
+    </script>
+  </body>
+  
+</html>

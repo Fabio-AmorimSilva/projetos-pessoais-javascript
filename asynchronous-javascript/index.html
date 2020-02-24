@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Asynchronous Javascript</title>
+
+    </head>
+    <body>
+        <button>Asynchronous Date</button>
+        <button class="otherButton">Other Button</button>
+
+    </body>
+    <script>
+        const btnDate = document.querySelector('button');
+        const btn = document.querySelector('.otherButton');
+        let count = 1;
+
+        btn.addEventListener('click', () => {
+            alert("Clicked here!");
+
+            let para = document.createElement('p');
+            para.textContent = "Paragraph generated!";
+            document.body.appendChild(para);
+
+        });
+
+
+
+        btnDate.addEventListener('click', function(){
+            let myDate;
+            for(let i = 0; i < 10000000; i++){
+                let date = new Date();
+                myDate = date;
+            }
+
+            let para = document.createElement('p');
+            para.textContent = "Element: " + count;
+            document.body.appendChild(para);
+            count++;
+
+        });
+
+
+
+    </script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<htm>
+  <head>
+      <meta charset="utf-8">
+      <title>Events</title>
+  </head>
+  <body>
+    <form>
+      <div>
+        <label for="fname">First name:</label>
+        <input id="fname" type="text">
+      </div>
+      <div>
+        <label for="lname">Last name:</label>
+        <input id="lname" type="text">
+      </div>
+      <div>
+        <input id="submit" type="submit">
+      </div>
+    </form>
+    <p  class="response"></p>
+    <button class="randomColor">Change ambient color</button>
+    <button class="bubbling">Press here</button>
+  <script>
+  
+  const form = document.querySelector('form');
+  const fname = document.querySelector('.fname');
+  const lname = document.querySelector('.lname');
+  const response = document.querySelector('.response');
+  const btnBubbl = document.querySelector('.bubbling');
+
+  document.onclick = bgChange;
+
+  btnBubbl.onclick = function(Events){
+    btnBubbl.textContent = "Changed Text!";
+    Events.stopPropagation();
+  }
+
+  form.onsubmit = function(Events){
+    if(fname.value === '' || lname.value === ''){
+      Events.preventDefault();
+      Events.stopPropagation();
+      response.textContent = 'You need to fill in both names!';
+    }
+  }
+
+  for(let i = 0; i < 32; i++){
+    let para = document.createElement('p');
+    para.textContent = i;
+    document.body.appendChild(para);
+  }
+  const colorBtn = document.querySelector('.randomColor');
+
+  function randomColor(){
+    return Math.floor(Math.random()*255);
+  }
+
+ function bgChange(Events){
+    const color = 'rgb(' + randomColor() + ',' + randomColor() + ',' + randomColor() + ')';
+    document.body.style.backgroundColor = color;
+    console.log(Events.target); 
+  }
+
+  let allPara = document.querySelectorAll('p');
+  
+  function paraColorChange(){
+    for(let i = 0; i < allPara.length; i++){
+      allPara[i].onclick = function(Events){
+        Events.target.style.backgroundColor = bgChange();
+      }
+    }
+  }
+
+  window.onclick = paraColorChange;
+
+  colorBtn.addEventListener('click', bgChange);
+  colorBtn.addEventListener('mouseover', bgChange);
+  colorBtn.addEventListener('mouseout', bgChange);
+  window.onkeypress = bgChange;
+  
+
+  // colorBtn.onfocus = bgChange; cor muda com o botão selecionado
+  // colorBtn.ondblclick = bgChange; cor muda com um clique duplo
+  // window.onkeypress = bgChange; cor muda quando uma tecla é pressionada
+  // window.onkeyup = bgChange; cor muda quando uma tecla é "levantada"
+  //window.onkeydown = bgChange; cor muda quando uma tecla é "abaixada"
+  //colorBtn.onmouseover = bgChange;
+  //colorBtn.onmouseout = bgChange;
+
+  </script>
+  </body>
+</htm>

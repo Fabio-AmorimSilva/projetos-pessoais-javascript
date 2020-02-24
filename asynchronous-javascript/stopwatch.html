@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <title>Simple setInterval clock</title>
+    <style>
+      p {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="clock"></p>
+    <p class="timePassed"></p>
+    <button class="start">Start</button>
+    <button class="stop">Stop</button>
+    <button class="reset">Reset</button>
+    
+    <script>
+
+      const btnStart = document.querySelector('.start');
+      const btnStop  = document.querySelector('.stop');
+      const btnReset = document.querySelector('.reset');
+      const passedTime = document.querySelector('.timePassed');
+      let secondsPassed;
+      let time = new Date();
+      let timeStart;
+      let timeStop;
+      let secondPassed;
+
+      function displayTime() {
+        let date = new Date();
+        let time = date.toLocaleTimeString();
+        document.querySelector('.clock').textContent = time;
+      }
+
+      btnStart.onclick = function(){
+         timeStart = time.toLocaleTimeString();
+         timeStop = setInterval(displayTime, 1000);
+         secondsPassed = setInterval(seconds, 1000);
+
+      }
+
+     btnStop.onclick = function(){
+        clearInterval(timeStop);
+        clearInterval(secondsPassed);
+        let time = date.toLocaleTimeString();
+        document.querySelector('.clock').textContent = time;
+
+      }
+
+      btnReset.onclick= function(){
+        clearInterval(timeStop);
+        clearInterval(secondsPassed);
+        document.querySelector('.clock').textContent = timeStart;
+
+      }
+
+      displayTime();
+      
+      function seconds(){
+         if(btnReset.onclick){
+            passedTime.textContent = "Seconds passed: " + Math.floor(Math.round(Date.now() - time)/1000);
+         }else{
+            passedTime.textContent = "" + 0;
+         }
+      }
+
+    </script>
+  </body>
+</html>

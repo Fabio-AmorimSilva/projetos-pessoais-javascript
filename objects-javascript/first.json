@@ -1,0 +1,35 @@
+{
+    "name": "GROUP",
+    "location": "Academic City",
+    "formed": 2010,
+    "objective": "Watch the darkness of Academic City",
+    "members": [
+        {
+            "name": "Accelerator",
+            "aka": "Unknow",
+            "age": 16,
+            "power": "Control Vector"
+        },
+
+        {
+            "name": "Musujimw Awaki",
+            "aka": "Move Point",
+            "age": 16,
+            "power": "Teleportation"
+        },
+
+        {
+            "name": "Tsuchimikado Motoharu",
+            "aka": "Unknow",
+            "age": 18,
+            "power": "Back to Life"
+        },
+
+        {
+            "name": "Ubaki",
+            "aka": "Unknow",
+            "age": 17,
+            "power": "Aztec Magic"
+        }
+    ]
+}

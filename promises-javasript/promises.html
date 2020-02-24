@@ -1,0 +1,24 @@
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My test page</title>
+  </head>
+  <body>
+    <p>This is my page</p>
+    <script>
+
+        let img = document.querySelector('img');
+        let promise  = fetch("coffee.jpg");
+        let promise2 = promise.then(Response => Response.blob());
+
+        let promise3 = promise2.then(myBlob => {
+            let objectURL = URL.createObjectURL(myBlob);
+            let image = document.createElement('img');
+            image.src = objectURL;
+            document.body.appendChild(image);
+        });
+
+    </script>
+  </body>
+</html>

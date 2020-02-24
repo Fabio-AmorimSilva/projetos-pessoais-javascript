@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Object-oriented JavaScript example</title>
+  </head>
+
+  <body>
+    <p>This example requires you to enter commands in your browser's JavaScript console (see <a href="https://developer.mozilla.org/en-US/docs/Learn/Common_questions/What_are_browser_developer_tools">What are browser developer tools</a> for more information).</p>
+  </body>
+
+    <script>
+
+        function Person(first, last, age, gender, interests){
+           this.name = {
+               first: first,
+               last: last
+           } 
+
+           this.age = age;
+           this.gender = gender;
+           this.interests = interests;
+        }
+
+        function Car(carName, model, year, color, horsePower){
+            this.carName = carName;
+            this.model = model;
+            this.year = year;
+            this.color = color;
+            this.horsePower = horsePower;
+
+        }
+           /**
+           this.bio = function(){
+               if(this.gender === 'Male'){
+                    alert(this.name.first + '' + this.name.last + 
+                    " and he is " + this.age + " years old.\n" + 
+                    "He likes " + this.interests);
+
+               }else{
+                   alert(this.name.first + '' + this.name.last +
+                   " and she is " + this.age + " years old.\n" +
+                   " She likes " + this.interests); 
+               }
+           }
+
+           this.greeting = function (){
+                alert("Hi! I\'m " + this.name + '.');
+            }
+        }
+        **/
+
+        Car.prototype.presentation = function(){
+            alert( "Name: " + this.carName + "\n" +
+                  "Model: " + this.model + "\n" +
+                  "Color: " + this.color + "\n" +
+                   "Year: " + this.year  + "\n" +
+            "Horse Power: " + this.horsePower);
+
+        }
+
+        Car.prototype.changeCor = function(){
+            let newColor = prompt("Type the new color:");
+            this.color = newColor;
+            alert(" new color is: " + this.color);
+        }
+
+        Person.prototype.bio = function(){
+            if(this.gender === 'Male'){
+                alert(this.name.first + '' + this.name.last +
+                " and he is " + this.age + " years old.\n" +
+                "He likes " + this.interests);
+
+            }else{
+                alert(this.name.first + '' + this.name.last +
+                " and she is " + this.age + " years old.\n" +
+                "She likes " + this.interests);
+            }
+        }
+
+        Person.prototype.greeting = function(){
+            alert("Hi! I\'m " + this.name.first + ' ' + this.name.last + '.');
+
+        }
+
+        //O método será herdado por todos os objetos
+        Person.prototype.farewell = function(){
+            alert(this.name.first + " has left the building. Bye for now!");
+        }
+
+        function Teacher(first, last, age, gender, interests, subject){
+            Person.call(this, first, last, age, gender, interests);
+            this.subject = subject;
+
+        }
+
+        Object.defineProperty(Teacher.prototype, 'constructor', {
+            value: Teacher,
+            Enumerator: false,
+            writable: true,
+        });
+
+        Teacher.prototype = Object.create(Person.prototype);
+
+        Teacher.prototype.greeting = function(){
+            let prefix;
+
+            if(this.gender === 'Male' || this.gender === 'male' || this.gender === 'M' || this.gender === 'm'){
+                prefix = 'Mr.';
+            }else if(this.gender === 'Female' || this.gender === 'female' || this.gender === 'F' || this.gender === 'f'){
+                prefix = 'Ms.';
+            }
+
+            alert("Hello, my name is "  + prefix + ' ' + this.name.last + ' and I teach ' +
+            this.subject + '.');
+        }
+
+    </script>
+   
+</html>

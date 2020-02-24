@@ -1,0 +1,52 @@
+html{
+    font-family: 'Courier Prime', monospace;
+    font-size: 14px;
+    background-color: chocolate;
+    width: auto;
+    height: auto;
+    text-shadow: black;
+
+}
+
+body {
+
+    background-color: coral;
+    width: 600px;
+    margin: 0 auto;
+    border: 5px solid black;
+    padding: 0px 20px 95px 20px;
+    text-shadow: 2px 2px 2px black; /*Primeiro valor é o deslocamento horizontal. Segundo valor é o deslocamento vertical.
+    O terceiro valor é o desfoque da sombra quanto maior mais borrada ficará.*/
+
+}
+
+img {
+
+    display: block;
+    margin: 0 auto;
+
+}
+
+h1 {
+    font-size: 60px;
+    text-align: center;
+}
+
+p, li {
+    font-size: 16px;
+    line-height: default;
+    letter-spacing: 1px;
+
+}
+
+.paragrafo-principal {
+    color:red;    
+}
+
+.paragrafos {
+    color: black;
+}
+
+a {
+    font-style: none;
+}

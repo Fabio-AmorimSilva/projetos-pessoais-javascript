@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Text Editor</title>
+
+    <style>
+      html {
+        font-family: sans-serif;
+      }
+      body {
+        width: 50%;
+        max-width: 800px;
+        min-width: 480px;
+        margin: 0 auto;
+      }
+      .lastResult {
+        color: white;
+        padding: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Text Writed</h1>
+
+    <p>Your text is going bellow</p>
+
+    <div class="form">
+      <label for="textEnter">Enter text: </label><input type="text" id="textEnter" class="textEnter">
+      <input type="submit" value="Text Submit" class="textSubmit">
+      <input type="submit" value="Clear" class="textClear">
+      <input type="submit" value="Undo" class="textUndo">
+
+    </div>
+
+    <div class="resultText">
+      <p class="texts"></p>
+    </div>
+
+    <script>
+
+      const text = document.querySelector('.textEnter');
+      const textSend = document.querySelector('.textSubmit');
+      const textErase = document.querySelector(".textClear");
+      const para = document.querySelector('.texts');
+      const Undo = document.querySelector('.textUndo');
+      let allText;
+
+
+      function sendText(){
+
+          para.textContent += String(text.value) + " ";
+          allText = para.textContent;
+          text.value  = "";
+        
+      }
+
+      textSend.addEventListener('click', sendText);
+
+      function resetText(){
+
+          para.textContent = "";
+
+      }
+
+      textErase.addEventListener('click', resetText);
+
+      function undoText(){
+
+        para.textContent = allText;
+
+      }
+
+      Undo.addEventListener('click', undoText);
+
+    </script>
+  </body>
+</html>

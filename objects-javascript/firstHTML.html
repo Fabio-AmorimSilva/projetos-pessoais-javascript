@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>GROUP MEMBERS</title>
+        <meta charset="utf-8">
+
+    </head>
+    <body>
+        <header>
+
+        </header>
+
+        <section>
+
+        </section>
+
+    </body>
+    <script>
+        const header = document.querySelector('header');
+        const section = document.querySelector('secrion');
+
+        let myURL = '/home/fabio/Documentos/Projetos-Web/Prática_2020/objects-javascript/first.json';
+        let requestURL = new XMLHttpRequest();
+        requestURL.open('GET', myURL);
+        requestURL.reponseType = 'json';
+        requestURL.send();
+        requestURL.onload = function(){
+            const group = requestURL.response;
+            fillHeader(group);
+            presentMembers(group);
+        }
+
+        function fillHeader(jsonObj){
+            const myH1 = document.createElement('h1');
+            myH1.textContent = jsonObj['name'];
+            header.appendChild(myH1)
+
+            const myPara = document.createElement('p');
+            myPara.textContent = "Hometown: " + jsonObj['location'] + "Formed: " + jsonObj['formed'] + 
+            "Objective: " + jsonObj['objective'];
+            header.appendChild(para);
+        }
+
+        function presentMembers(jsonObj){
+            const members = jsonObj['members'];
+
+            for(let i = 0; i < members.length; i++){
+
+                const myArticle = document.createElement('article');
+                const myH2 = document.createElement('h2');
+                const myPara1 = document.createElement('p');
+                const myPara2 = document.createElement('p');
+                const myPara3 = document.createElement('p');
+                const myPara4 = document.createElement('p');
+
+                myPara1.textContent = "Name: " + members[i].name;
+                myPara2.textContent = "Aka: " +  members[i].aka;
+                myPara3.textContent = "Age: " +  members[i].age;
+                myPara4.textContent = "Power" +  members[i].power;
+
+                myArticle.appendChild(myH2);
+                myArticle.appendChild(myPara1);
+                myArticle.appendChild(myPara2);
+                myArticle.appendChild(myPara3);
+                myArticle.appendChild(myPara4);
+
+            }
+        }
+
+    </script>
+</html>
